@@ -1,0 +1,13 @@
+{
+  "domain": "ha_energy_informations",
+  "name": "HA Energy Informations",
+  "codeowners": [
+    "@jkrenzer"
+  ],
+  "documentation": "https://github.com/jkrenzer/ha-energy-informations/tree/main/doc",
+  "issue_tracker": "https://github.com/jkrenzer/ha-energy-informations/issues",
+  "iot_class": "calculated",
+  "loggers": [],
+  "requirements": [],
+  "version": "0.1.0"
+}

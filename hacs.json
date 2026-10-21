@@ -1,0 +1,9 @@
+{
+  "name": "HA Energy Informations",
+  "content_in_root": false,
+  "domains": [
+    "ha_energy_informations"
+  ],
+  "homeassistant": "2026.10.0",
+  "render_readme": true
+}
