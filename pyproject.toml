@@ -1,0 +1,71 @@
+[tool.poetry]
+name = "ha-energy-informations"
+version = "0.1.0"
+description = "Home Assistant custom integration to expose energy dashboard information in templates."
+authors = ["jkrenzer <jkrenzer@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{ include = "custom_components" }]
+
+[tool.poetry.dependencies]
+python = ">=3.13,<3.14"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.10.0"
+ruff = "^0.8.0"
+pre-commit = "^4.0.1"
+poethepoet = "^0.30.0"
+bump-my-version = "^0.32.1"
+commitizen = "^3.30.0"
+
+[tool.poe.tasks]
+format = ["ruff format .", "black ."]
+lint = ["ruff check .", "black --check ."]
+check = ["poe lint", "pre-commit run --all-files"]
+
+[tool.black]
+line-length = 88
+target-version = ["py313"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.1.0"
+tag_format = "v$version"
+update_changelog_on_bump = false
+version_files = [
+  "pyproject.toml:version",
+  "custom_components/ha_energy_informations/manifest.json:version",
+  "custom_components/ha_energy_informations/__init__.py:__version__",
+]
+
+[tool.bumpversion]
+current_version = "0.1.0"
+parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)"
+serialize = ["{major}.{minor}.{patch}"]
+search = "{current_version}"
+replace = "{new_version}"
+regex = false
+ignore_missing_version = false
+tag = true
+tag_name = "v{new_version}"
+commit = true
+message = "chore(release): bump version {current_version} -> {new_version}"
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+
+[[tool.bumpversion.files]]
+filename = "custom_components/ha_energy_informations/manifest.json"
+
+[[tool.bumpversion.files]]
+filename = "custom_components/ha_energy_informations/__init__.py"
+
+[build-system]
+requires = ["poetry-core>=1.9.0"]
+build-backend = "poetry.core.masonry.api"
